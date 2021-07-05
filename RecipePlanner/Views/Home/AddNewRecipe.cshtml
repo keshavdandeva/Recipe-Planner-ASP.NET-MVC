@@ -1,0 +1,26 @@
+﻿@model RecipeModel;
+@{
+    ViewBag.Title = "AddNewRecipe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add New Recipe</h1>
+<p> Create any recipe you want :)</p>
+
+<form>
+    <p>Enter the name of recipe:</p>
+    <div class="form-group">
+        <input type="text" name="name_pass" class="form-control" placeholder="e.g Lasagna" />
+    </div>
+    <p>Enter the ingredients:</p>
+    <div class="form-group">
+        <textarea type="text" name="ingredients_pass" class="form-control" placeholder="e.g Tomato Sauce 1 litre" rows="4"></textarea>
+    </div>
+    <p>Enter the recipe description:</p>
+    <div class="form-group">
+        <textarea type="text" name="content_pass" class="form-control" placeholder="e.g Order from pyszne xD" rows="4"></textarea>
+    </div>
+
+    <input type="submit" class="btn btn-outline-primary" name="submit" value="Save" formaction="SaveRecipe" formmethod="POST">
+
+</form>

@@ -1,0 +1,35 @@
+﻿@model RecipeModel;
+
+@{ ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Edit Recipe</h1>
+<p> Edit the contents of the selected recipe below:</p>
+
+<form>
+    <p>Enter the name of recipe:</p>
+    <div class="form-group">
+        <input type="text" name="name_pass" class="form-control" placeholder="e.g Lasagna" value="@Model.RecipeName" />
+    </div>
+    <p>Enter the ingredients:</p>
+    <div class="form-group">
+        <textarea type="text" name="ingredients_pass" class="form-control" placeholder="e.g Tomato Sauce 1 litre" rows="4">
+            @for (int i = 0; i < @Model.IngredientNames.Count(); i++)
+            {
+
+                @(Model.IngredientNames.ElementAt(i) + " " + Model.IngredientQuantities.ElementAt(i) + " " + Model.IngredientUnits.ElementAt(i) + "\n");
+                
+            }
+            </textarea>
+
+    </div>
+    <p>Enter the recipe description:</p>
+    <div class="form-group">
+        <textarea type="text" name="content_pass" class="form-control" placeholder="e.g Order from pyszne xD" rows="4">@string.Concat(Model.RecipeDescription)</textarea>
+    </div>
+
+    <input type="hidden" name="old_name_pass" value="@Model.RecipeName">
+
+    <input type="submit" class="btn btn-outline-success" name="submit" value="Save" formaction="SaveEdit" formmethod="POST">
+
+</form>

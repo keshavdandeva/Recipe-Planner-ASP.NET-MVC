@@ -1,0 +1,15 @@
+﻿@model RecipeListModel;
+
+@{ ViewBag.Title = "Add";
+   Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Shopping List</h1>
+<h3>Enter the recipes you want to make and generate a ingredient list in less than a second!</h3>
+
+<form>
+    <div class="form-group">
+        <textarea type="text" name="content_pass" class="form-control" placeholder="e.g Omlette" rows="4"></textarea>
+    </div>
+    <input type="submit" class="btn btn-outline-dark" value="Calculate" formaction="SaveShoppingList" formmethod="POST">
+</form>
+

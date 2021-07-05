@@ -1,0 +1,51 @@
+﻿@model RecipeListModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>To the ultimate Recipe Planner Application. Create your shopping list with just few clicks.</p>
+</div>
+<h1>Available Recipes</h1>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        @foreach (RecipeModel recipe in Model.RecipeList)
+        {
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#@recipe.RecipeName.Replace(' ', '-')">
+            @recipe.RecipeName
+        </a>
+    </h4>
+
+</div>
+                <div id="@recipe.RecipeName.Replace(' ', '-')" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <a asp-action="DeleteRecipe" asp-controller="Home" asp-route-name_pass="@recipe.RecipeName"><button type="button" class="btn btn-danger">Delete</button></a>
+                        <a asp-action="EditRecipe" asp-controller="Home" asp-route-name_pass="@recipe.RecipeName"><button type="button" class="btn btn-success">Edit</button></a>
+
+                        <p>Ingredients:</p>
+                        <ul>
+                            @for (int i = 0; i < recipe.IngredientNames.Count(); i++)
+                            {
+                                <div>
+                                    @recipe.IngredientNames.ElementAt(i)
+                                    @recipe.IngredientQuantities.ElementAt(i)
+                                    @recipe.IngredientUnits.ElementAt(i)
+                                    <br>
+                                </div>
+                            }
+
+                        </ul>
+                        <p>Recipe:</p>
+                        <ul>
+                            @recipe.RecipeDescription
+
+                        </ul>
+
+                    </div>
+                </div>}
+    </div>
+</div>
